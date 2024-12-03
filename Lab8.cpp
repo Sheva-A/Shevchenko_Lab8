@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-#include <algorithm>
 using namespace std;
 
 void removeSpaces(char* str)
@@ -13,13 +12,30 @@ void removeSpaces(char* str)
     str[count] = '\0';
 }
 
+void sortString(char* str)
+{
+    int n = strlen(str);
+    for (int i = 0; i < n-1; i++)
+    {
+        for (int j = i+1; j < n; j++)
+        {
+            if (str[i] > str[j])
+            {
+                char temp = str[i];
+                str[i] = str[j];
+                str[j] = temp;
+            }
+        }
+    }
+}
+
 int main()
 {
     char str[100];
     cout << "Enter string: " << endl;
     cin.getline(str, 100);
     removeSpaces(str);
-    sort(str, str + strlen(str));
+    sortString(str);
     cout << "String without spaces: " << str;
     return 0;
 }
